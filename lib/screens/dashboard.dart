@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_signin/ph_virtualization/page/home_page.dart';
 import 'package:firebase_signin/temp_virtualization/page/home_page.dart';
 import 'package:firebase_signin/screens/signin_screen.dart';
-import 'package:firebase_signin/reusable_widgets/reusable_widget.dart';
 import 'package:firebase_signin/screens/temp_gauge_screen.dart';
 import 'package:firebase_signin/screens/ph_gauge_screen.dart';
 import 'package:firebase_signin/utils/color_utils.dart';

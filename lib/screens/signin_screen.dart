@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_signin/reusable_widgets/reusable_widget.dart';
-import 'package:firebase_signin/utils/home_screen.dart';
 import 'package:firebase_signin/screens/reset_password.dart';
 import 'package:firebase_signin/screens/signup_screen.dart';
 import 'package:firebase_signin/utils/color_utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_signin/screens/dashboard.dart';
 
@@ -11,12 +11,14 @@ class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  _SignInScreenState createState() {
+    return _SignInScreenState();
+  }
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +61,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => DashboardScreen1()));
                   }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
+                    if (kDebugMode) {
+                      print("Error ${error.toString()}");
+                    }
                   });
                 }),
                 signUpOption()
@@ -80,7 +84,7 @@ class _SignInScreenState extends State<SignInScreen> {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SignUpScreen()));
+                MaterialPageRoute(builder: (context) => const SignUpScreen()));
           },
           child: const Text(
             " Sign Up",
@@ -103,7 +107,7 @@ class _SignInScreenState extends State<SignInScreen> {
           textAlign: TextAlign.right,
         ),
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ResetPassword())),
+            context, MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }
